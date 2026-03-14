@@ -3,91 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexander Sánchez - Asesor Comercial Distrileco</title>
+    <title>Alexander Sánchez - Asesor Distrileco</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #004691; /* Azul corporativo Distrileco */
-            --accent-color: #25d366; /* Verde WhatsApp */
-            --bg-color: #f4f7f9;
+            --primary-color: #0056b3;
+            --secondary-color: #003d7a;
+            --whatsapp-color: #25d366;
             --white: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.15);
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 15px;
+            padding: 10px;
         }
 
         .card {
             background: var(--white);
             width: 100%;
-            max-width: 400px;
+            max-width: 380px;
             border-radius: 25px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+            box-shadow: 0 15px 35px var(--shadow);
             overflow: hidden;
             text-align: center;
-            transition: transform 0.3s ease;
+            position: relative;
         }
 
+        /* Encabezado con Curva */
         .header {
             background: var(--primary-color);
-            padding: 40px 20px;
+            background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 40px 20px 60px;
             position: relative;
         }
 
         .logo-container {
             background: white;
-            width: 130px;
-            height: 130px;
-            margin: 0 auto;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto -70px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 5px solid #fff;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border: 6px solid var(--white);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
         }
 
         .logo-container img {
-            max-width: 90%;
+            width: 90%;
             height: auto;
-            border-radius: 50%;
+            object-fit: contain;
+        }
+
+        .profile-info {
+            margin-top: 80px;
+            padding: 0 20px;
         }
 
         .profile-info h1 {
             font-size: 24px;
-            color: #fff;
-            margin: 20px 0 5px;
-            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0;
             text-transform: uppercase;
+            font-weight: 800;
         }
 
         .profile-info p {
-            color: #e0e0e0;
+            color: #666;
             font-size: 14px;
-            margin: 0;
-            letter-spacing: 1.5px;
+            font-weight: 600;
+            margin: 5px 0 20px;
+            letter-spacing: 1px;
         }
 
-        .content {
-            padding: 25px 20px;
-        }
+        .content { padding: 20px; }
 
         .zones {
-            background: #e7f1ff;
+            background: #f0f7ff;
             padding: 12px;
-            border-radius: 12px;
+            border-radius: 15px;
             font-size: 13px;
-            margin-bottom: 25px;
-            border-left: 5px solid var(--primary-color);
-            color: #333;
-            line-height: 1.4;
+            margin-bottom: 20px;
+            color: #444;
+            border: 1px dashed var(--primary-color);
         }
 
         .btn-grid {
@@ -102,40 +111,34 @@
             justify-content: center;
             padding: 14px;
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
+            border-radius: 12px;
+            font-weight: 700;
             color: white;
-            font-size: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .btn i { margin-right: 12px; font-size: 1.3em; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
 
-        .btn-whatsapp { background-color: #25d366; }
-        .btn-chatbot { background-color: #128C7E; }
-        .btn-phone { background-color: #007bff; }
-        .btn-web { background-color: #6f42c1; }
-        .btn-catalog { background-color: #ffc107; color: #000; }
-        .btn-email { background-color: #dc3545; }
-        .btn-fb { background-color: #3b5998; }
-        .btn-ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #bc1888); }
+        .btn i { margin-right: 12px; font-size: 1.4em; }
 
-        .address {
-            font-size: 12px;
-            margin-top: 20px;
-            color: #666;
-            padding: 10px;
-        }
+        .btn-wa { background-color: var(--whatsapp-color); }
+        .btn-bot { background-color: #128C7E; }
+        .btn-call { background-color: #007bff; }
+        .btn-web { background-color: #6610f2; }
+        .btn-pdf { background-color: #ffc107; color: #000; }
+        .btn-mail { background-color: #d63031; }
 
         .footer {
-            padding: 20px;
+            padding: 25px 20px;
             font-size: 11px;
             color: #888;
-            background: #fdfdfd;
+            background: #fafafa;
             border-top: 1px solid #eee;
         }
 
-        .footer strong { color: #555; }
+        /* Seguridad de Suscripción */
+        #expired-msg { display: none; padding: 50px 20px; }
     </style>
 </head>
 <body>
@@ -143,79 +146,66 @@
 <div class="card" id="main-card">
     <div class="header">
         <div class="logo-container">
-            <img src="https://i.ibb.co/XRLyvYx/logodistrileco.jpg" alt="Logo DISTRILECO">
+            <img src="https://i.ibb.co/XRLyvYx/logodistrileco.jpg" alt="Logo Distrileco Premium">
         </div>
-        <div class="profile-info">
-            <h1>Alexander Sánchez</h1>
-            <p>ASESOR COMERCIAL - DISTRILECO</p>
-        </div>
+    </div>
+
+    <div class="profile-info">
+        <h1>Alexander Sánchez</h1>
+        <p>ASESOR COMERCIAL DISTRILECO</p>
     </div>
 
     <div class="content">
         <div class="zones">
-            <strong><i class="fas fa-truck"></i> ZONAS DE ATENCIÓN:</strong><br>
-            Valdivia, Caucasia, El Bagre y Zaragoza<br>
-            (Bajo Cauca Antioqueño)
+            <strong><i class="fas fa-shipping-fast"></i> COBERTURA TOTAL:</strong><br>
+            Valdivia - Caucasia - El Bagre - Zaragoza
         </div>
 
         <div class="btn-grid">
-            <a href="https://wa.me/573113896080" class="btn btn-whatsapp">
+            <a href="https://wa.me/573113896080" class="btn btn-wa">
                 <i class="fab fa-whatsapp"></i> WhatsApp Personal
             </a>
-            <a href="https://wa.me/573206134987" class="btn btn-chatbot">
-                <i class="fas fa-robot"></i> Chatbot Pedidos
+            <a href="https://wa.me/573206134987" class="btn btn-bot">
+                <i class="fas fa-robot"></i> Chatbot de Pedidos
             </a>
-            <a href="tel:+573113896080" class="btn btn-phone">
-                <i class="fas fa-phone-alt"></i> Llamar Directo
+            <a href="tel:+573113896080" class="btn btn-call">
+                <i class="fas fa-phone-alt"></i> Llamar ahora
             </a>
             <a href="https://haroldco45.github.io/vibras-positivas-apps/distrileco/index.html" class="btn btn-web">
-                <i class="fas fa-laptop-code"></i> App Web Catálogo
+                <i class="fas fa-mobile-alt"></i> App Web Distrileco
             </a>
-            <a href="https://www.distrileco.com/" class="btn btn-catalog">
-                <i class="fas fa-file-pdf"></i> Catálogo PDF / Web
+            <a href="https://www.distrileco.com/" class="btn btn-pdf">
+                <i class="fas fa-file-pdf"></i> Ver Catálogo de Productos
             </a>
-            <a href="mailto:dcaucasiasas@gmail.com" class="btn btn-email">
+            <a href="mailto:dcaucasiasas@gmail.com" class="btn btn-mail">
                 <i class="fas fa-envelope"></i> Enviar Correo
             </a>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <a href="https://www.facebook.com/share/14UHAwvBqu3/" class="btn btn-fb">
-                    <i class="fab fa-facebook"></i> FB
-                </a>
-                <a href="https://www.instagram.com/distrileco_caucasia?igsh=MTJjcWZmbzd4ODJsbQ==" class="btn btn-ig">
-                    <i class="fab fa-instagram"></i> IG
-                </a>
-            </div>
-        </div>
-
-        <div class="address">
-            <i class="fas fa-map-marker-alt"></i> Carrera 2 Diagonal 25 No 2-25<br>
-            Barrio El Carmen - Caucasia, Antioquia
         </div>
     </div>
 
     <div class="footer">
-        <p>Fecha: <span id="real-date"></span></p>
+        <p><i class="fas fa-map-marker-alt"></i> Carrera 2 Diag 25 No 2-25 Barrio El Carmen</p>
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+        <p>Generado: <span id="col-date"></span></p>
         <p>App desarrollada por <strong>Vibras Positivas (3117700431)</strong><br>
-        © Derechos de Autor 2026 - Todos los derechos reservados</p>
+        © Derechos de Autor 2026</p>
     </div>
 </div>
 
 <script>
-    // Configuración Fecha Real Colombia
-    const dateOptions = { timeZone: 'America/Bogota', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-    document.getElementById('real-date').innerText = new Date().toLocaleString('es-CO', dateOptions);
+    // Fecha Real Colombia
+    const dOptions = { timeZone: 'America/Bogota', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+    document.getElementById('col-date').innerText = new Date().toLocaleString('es-CO', dOptions);
 
-    // CONTROL DE SUSCRIPCIÓN (GITHUB/CONTROL)
-    // Fecha de vencimiento: 14 de Marzo de 2027
-    const expirationDate = new Date('2027-03-14');
-    const today = new Date();
-
-    if (today > expirationDate) {
+    // CONTROL DE SUSCRIPCIÓN INVISIBLE
+    const expiration = new Date('2027-03-14');
+    if (new Date() > expiration) {
         document.getElementById('main-card').innerHTML = `
-            <div style="padding: 60px 20px; background: white;">
-                <i class="fas fa-exclamation-triangle" style="font-size: 3em; color: #dc3545;"></i>
-                <h2 style="color: #333;">Suscripción Vencida</h2>
-                <p>Por favor, contacte a <strong>Vibras Positivas (3117700431)</strong> para renovar su tarjeta digital.</p>
+            <div style="padding:80px 20px;">
+                <i class="fas fa-lock" style="font-size:40px; color:#d63031;"></i>
+                <h2 style="color:#333;">Suscripción Expirada</h2>
+                <p>Contacte a <b>Vibras Positivas</b> para renovar este servicio.</p>
+                <p>Tel: 3117700431</p>
             </div>
         `;
     }
